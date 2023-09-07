@@ -43,7 +43,26 @@ public class User implements Serializable {
      * 用户角色：user/admin
      */
     private String userRole;
-
+    /**
+     * 用戶性別
+     */
+    private String gender;
+    /**
+     * 电话号码
+     */
+    private String phone;
+    /**
+     * 电子邮箱
+     */
+    private String email;
+    /**
+     * 用户状态
+     */
+    private int userStatus;
+    /**
+     * 用户编号
+     */
+    private String userCode;
     /**
      * 创建时间
      */

@@ -26,6 +26,8 @@ import com.zijin.service.UserService;
 import com.zijin.utils.ExcelUtils;
 import com.zijin.utils.SqlUtils;
 import com.zijin.model.dto.chart.*;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -43,12 +45,13 @@ import java.util.concurrent.ThreadPoolExecutor;
 import static com.zijin.constant.CommonConstant.BI_MODE_ID;
 
 /**
- * 帖子接口
+ * 图表接口
  *
  *
  */
 @RestController
 @RequestMapping("/chart")
+@Api(tags = "chartController")
 @Slf4j
 public class ChartController {
 
@@ -78,6 +81,7 @@ public class ChartController {
      * @return
      */
     @PostMapping("/add")
+    @ApiOperation(value = "创建图表")
     public BaseResponse<Long> addChart(@RequestBody ChartAddRequest chartAddRequest, HttpServletRequest request) {
         if (chartAddRequest == null) {
             throw new BusinessException(ErrorCode.PARAMS_ERROR);
@@ -100,6 +104,7 @@ public class ChartController {
      * @return
      */
     @PostMapping("/delete")
+    @ApiOperation(value = "删除图表")
     public BaseResponse<Boolean> deleteChart(@RequestBody DeleteRequest deleteRequest, HttpServletRequest request) {
         if (deleteRequest == null || deleteRequest.getId() <= 0) {
             throw new BusinessException(ErrorCode.PARAMS_ERROR);
@@ -124,6 +129,7 @@ public class ChartController {
      * @return
      */
     @PostMapping("/update")
+    @ApiOperation(value = "管理员更新图表信息")
     @AuthCheck(mustRole = UserConstant.ADMIN_ROLE)
     public BaseResponse<Boolean> updateChart(@RequestBody ChartUpdateRequest chartUpdateRequest) {
         if (chartUpdateRequest == null || chartUpdateRequest.getId() <= 0) {
@@ -146,6 +152,7 @@ public class ChartController {
      * @return
      */
     @GetMapping("/get")
+    @ApiOperation(value = "根据Id获取图表")
     public BaseResponse<Chart> getChartById(long id, HttpServletRequest request) {
         if (id <= 0) {
             throw new BusinessException(ErrorCode.PARAMS_ERROR);
@@ -165,6 +172,7 @@ public class ChartController {
      * @return
      */
     @PostMapping("/list/page")
+    @ApiOperation(value = "分页获取图表")
     public BaseResponse<Page<Chart>> listChartByPage(@RequestBody ChartQueryRequest chartQueryRequest,
             HttpServletRequest request) {
         long current = chartQueryRequest.getCurrent();
@@ -184,6 +192,7 @@ public class ChartController {
      * @return
      */
     @PostMapping("/my/list/page")
+    @ApiOperation(value = "获取我的图表")
     public BaseResponse<Page<Chart>> listMyChartByPage(@RequestBody ChartQueryRequest chartQueryRequest,
             HttpServletRequest request) {
         if (chartQueryRequest == null) {
@@ -210,6 +219,7 @@ public class ChartController {
      * @return
      */
     @PostMapping("/edit")
+    @ApiOperation(value = "编辑图表")
     public BaseResponse<Boolean> editChart(@RequestBody ChartEditRequest chartEditRequest, HttpServletRequest request) {
         if (chartEditRequest == null || chartEditRequest.getId() <= 0) {
             throw new BusinessException(ErrorCode.PARAMS_ERROR);
@@ -238,6 +248,7 @@ public class ChartController {
      * @return
      */
     @PostMapping("/gen")
+    @ApiOperation(value = "同步图表文件上传")
     public BaseResponse<BiResponse> genChartByAi(@RequestPart("file") MultipartFile multipartFile,
                                                  GenChartByAiRequest genChartByAiRequest, HttpServletRequest request) {
         String name = genChartByAiRequest.getName();
@@ -331,6 +342,7 @@ public class ChartController {
      * @return
      */
     @PostMapping("/gen/Async")
+    @ApiOperation(value = "异步线程池图表文件上传")
     public BaseResponse<BiResponse> genChartByAiAsync(@RequestPart("file") MultipartFile multipartFile,
                                                  GenChartByAiRequest genChartByAiRequest, HttpServletRequest request) {
         String name = genChartByAiRequest.getName();
@@ -442,6 +454,7 @@ public class ChartController {
      * @return
      */
     @PostMapping("/gen/Async/mq")
+    @ApiOperation(value = "消息队列mq 异步图表文件上传")
     public BaseResponse<BiResponse> genChartByAiAsyncMq(@RequestPart("file") MultipartFile multipartFile,
                                                       GenChartByAiRequest genChartByAiRequest, HttpServletRequest request) {
         String name = genChartByAiRequest.getName();

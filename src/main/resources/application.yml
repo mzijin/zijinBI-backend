@@ -86,15 +86,22 @@ wx:
     appSecret: xxx
 # 对象存储
 # todo 需替换配置
-cos:
-  client:
-    accessKey: xxx
-    secretKey: xxx
-    region: xxx
-    bucket: xxx
+# todo 需替换配置
+aliyun:
+  oss:
+    file:
+      endpoint:
+      keyid: xxxxxxxxxxxxx
+      keysecret: xxxxxxxxxxxxx
+      bucketname: xxxxxxxxxxxxx
 # 鱼聪明 AI 配置（https://yucongming.com/）
 yuapi:
   client:
     access-key: 4loxbe1h6pyrbod1j2r5tplbtgsqg0we
     secret-key: 4wsjp7g4v9b3u0guznu3x23flv1ug71x
-
+cos:
+  client:
+    secretKey: xxxxxx
+    bucket: xxx
+    region: xxx
+    accessKey:  xxxxxx
