@@ -90,10 +90,10 @@ wx:
 aliyun:
   oss:
     file:
-      endpoint: oss-cn-guangzhou.aliyuncs.com
-      keyid: LTAI5tFuDjzdsjEH5C3ZQSys
-      keysecret: vhtELmkfj5WsRxV0dHN2zURQypkTuK
-      bucketname: mzijinbi
+      endpoint: xxxxxx
+      keyid: xxxxxx
+      keysecret: xxxxxx
+      bucketname: xxxxxx
 # 鱼聪明 AI 配置（https://yucongming.com/）
 yuapi:
   client:
