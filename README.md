@@ -42,18 +42,26 @@
 
 
 ## BI项目展示
+### 登录页展示
+![](images/img_6.png)
+### 注册页展示
+![](images/img_7.png)
+### 首页展示
+![](images/img_3.png)
+![](images/img_4.png)
 ### 同步分析数据生成图表
-![img_10.png](img_10.png)
-![img_7.png](img_7.png)
+![](images/img_2.png)
 ### 异步分析数据生成图表
-![img_6.png](img_6.png)
-![img_8.png](img_8.png)
-![img_9.png](img_9.png)
+![](images/img_1.png)
 ### 图表管理界面
+![](images/img_8.png)
+![](images/img_9.png)
+### 用户管理页面
+![](images/img.png)
+![](images/img_5.png)
+>
+> 
 ## 快速上手
-
-> 所有需要修改的地方鱼皮都标记了 `todo`，便于大家找到修改的位置~
-
 ### MySQL 数据库
 
 1）修改 `application.yml` 的数据库配置为你自己的：
@@ -111,7 +119,7 @@ spring:
 
 
 ```
-```mq
+```yml
 spring:
 rabbitmq:
     host: localhost
@@ -119,12 +127,25 @@ rabbitmq:
     password: guest
     username: guest
 ```
-```
+```yml
 
 yuapi:
     client:
         access-key: 自己的key
         secret-key: 自己的key
+```
+
+# 对象存储
+# todo 需替换配置
+# todo 需替换配置
+```yml
+aliyun:
+    oss:
+    file:
+    endpoint: xxxxxxx
+    keyid: xxxxxxx
+    keysecret: xxxxxxx
+    bucketname: xxxxxxx
 ```
 
 

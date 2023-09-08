@@ -1,6 +1,11 @@
 package com.zijin.model.dto.user;
 
 import java.io.Serializable;
+import java.util.Date;
+
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableLogic;
 import lombok.Data;
 
 /**
@@ -13,6 +18,7 @@ public class UserUpdateRequest implements Serializable {
     /**
      * id
      */
+    @TableId(type = IdType.ASSIGN_ID)
     private Long id;
 
     /**
@@ -39,31 +45,41 @@ public class UserUpdateRequest implements Serializable {
      * 用户角色：user/admin
      */
     private String userRole;
-
     /**
-     * 性别 男 女
+     * 用戶性別
      */
     private String gender;
-
     /**
-     * 电话
+     * 电话号码
      */
     private String phone;
-
     /**
-     * 邮箱
+     * 电子邮箱
      */
     private String email;
-
     /**
-     * 状态 0 - 正常 1-注销 2-封号
+     * 用户状态
      */
-    private Integer userStatus;
-
+    private int userStatus;
     /**
      * 用户编号
      */
     private String userCode;
+    /**
+     * 创建时间
+     */
+    private Date createTime;
+
+    /**
+     * 更新时间
+     */
+    private Date updateTime;
+
+    /**
+     * 是否删除
+     */
+    @TableLogic
+    private Integer isDelete;
 
     private static final long serialVersionUID = 1L;
 }

@@ -8,6 +8,11 @@ package com.zijin.constant;
 public interface UserConstant {
 
     /**
+     * 盐值，混淆密码
+     */
+    String SALT = "shier";
+
+    /**
      * 用户登录态键
      */
     String USER_LOGIN_STATE = "user_login";
@@ -28,6 +33,11 @@ public interface UserConstant {
      * 被封号
      */
     String BAN_ROLE = "ban";
+
+    /**
+     * 默认头像
+     */
+    String DEFAULT_AVATAR = "https://yupi.icu/logo.png";
 
     // endregion
 }

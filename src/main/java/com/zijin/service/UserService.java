@@ -2,29 +2,30 @@ package com.zijin.service;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.zijin.model.dto.user.UserAddRequest;
 import com.zijin.model.dto.user.UserQueryRequest;
+import com.zijin.model.dto.user.UserRegisterRequest;
+import com.zijin.model.dto.user.UserUpdateMyRequest;
 import com.zijin.model.entity.User;
 import com.zijin.model.vo.LoginUserVO;
 import com.zijin.model.vo.UserVO;
-import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * 用户服务
  *
- *
+ * @author Shier
  */
 public interface UserService extends IService<User> {
 
     /**
      * 用户注册
-     *
-     * @param userAccount   用户账户
-     * @param userPassword  用户密码
-     * @param checkPassword 校验密码
-     * @return 新用户 id
+     * @param userRegisterRequest
+     * @return
      */
-    long userRegister(String userAccount, String userPassword, String checkPassword);
+    long userRegister(UserRegisterRequest userRegisterRequest);
 
     /**
      * 用户登录
@@ -35,6 +36,14 @@ public interface UserService extends IService<User> {
      * @return 脱敏后的用户信息
      */
     LoginUserVO userLogin(String userAccount, String userPassword, HttpServletRequest request);
+
+    /**
+     * 管理员添加用户
+     *
+     * @param userAddRequest
+     * @return
+     */
+    long addUser(UserAddRequest userAddRequest);
 
     /**
      * 获取当前登录用户
@@ -107,4 +116,14 @@ public interface UserService extends IService<User> {
      */
     QueryWrapper<User> getQueryWrapper(UserQueryRequest userQueryRequest);
 
+    /**
+     * 用户修改自己的信息
+     * @param userUpdateMyRequest
+     * @param request
+     * @return
+     */
+    boolean updateMyUser(UserUpdateMyRequest userUpdateMyRequest,
+                         HttpServletRequest request);
+
+    long userRegister(String userAccount, String userPassword, String checkPassword);
 }

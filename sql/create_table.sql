@@ -40,3 +40,15 @@ create table if not exists chart
     updateTime   datetime     default CURRENT_TIMESTAMP not null on update CURRENT_TIMESTAMP comment '更新时间',
     isDelete     tinyint      default 0                 not null comment '是否删除'
 ) comment '图表信息表' collate = utf8mb4_unicode_ci;
+-- AI调用次数表
+create table if not exists ai_frequency
+(
+    id              bigint auto_increment comment 'id' primary key,
+    userId          bigint                             not null comment '用户 id',
+    totalFrequency  bigint   default 0                 not null comment '总调用次数',
+    remainFrequency int      default 5                 not null comment '剩余调用次数',
+    createTime      datetime default CURRENT_TIMESTAMP not null comment '创建时间',
+    updateTime      datetime default CURRENT_TIMESTAMP not null on update CURRENT_TIMESTAMP comment '更新时间',
+    isDelete        tinyint  default 0                 not null comment '是否删除'
+) comment 'ai调用次数表' collate = utf8mb4_unicode_ci;
+
